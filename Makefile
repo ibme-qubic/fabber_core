@@ -2,29 +2,17 @@ include ${FSLCONFDIR}/default.mk
 
 PROJNAME = fabber_core
 
-USRINCFLAGS = -I${INC_NEWMAT} -I${INC_CPROB} -I${INC_BOOST} -DFABBER_SRC_DIR="\"${PWD}\"" -DFABBER_BUILD_DIR="\"${PWD}\""
-USRLDFLAGS = -L${LIB_NEWMAT} -L${LIB_PROB} -L/lib64
-
-FSLVERSION= $(shell cat ${FSLDIR}/etc/fslversion | head -c 1)
-ifeq ($(FSLVERSION), 5) 
-  NIFTILIB = -lfslio -lniftiio 
-  MATLIB = -lnewmat
-else 
-  UNAME := $(shell uname -s)
-  ifeq ($(UNAME), Linux)
-    MATLIB = -lopenblas
-  endif
-  NIFTILIB = -lNewNifti
-endif
-
-LIBS = -lnewimage -lmiscmaths -lutils -lprob ${MATLIB} ${NIFTILIB} -lznz -lz -ldl
+USRINCFLAGS = -DFABBER_SRC_DIR="\"${PWD}\"" -DFABBER_BUILD_DIR="\"${PWD}\""
+LIBS = -lfsl-newimage -lfsl-miscmaths -lfsl-utils \
+       -lfsl-cprob -lfsl-NewNifti -lfsl-znz -ldl
 TESTLIBS = -lgtest -lpthread
 
 #
-# Executables
+# Executables and libraries provided by this project
 #
 
 XFILES = fabber mvntool
+SOFILES = libfsl-fabbercore.so libfsl-fabberexec.so
 SCRIPTS = fabber_var
 
 # Sets of objects separated into logical divisions
@@ -66,27 +54,27 @@ CXXFLAGS += -DGIT_SHA1=\"${GIT_SHA1}\" -DGIT_DATE="\"${GIT_DATE}\""
 
 # Targets
 
-all:	${XFILES} libfabbercore.a libfabberexec.a
+all: ${XFILES} ${SOFILES}
 
 clean:
-	${RM} -f /tmp/fslgrot *.o mvn_tool/*.o *.a *.exe core depend.mk fabber_test
+	${RM} -f /tmp/fslgrot *.o mvn_tool/*.o *.a *.so *.exe core depend.mk fabber_test
 
-mvntool: ${OBJS} mvn_tool/mvntool.o rundata_newimage.o 
-	${CXX} ${CXXFLAGS} ${LDFLAGS} -o $@ ${OBJS} mvn_tool/mvntool.o rundata_newimage.o ${LIBS}
+mvntool: ${OBJS} mvn_tool/mvntool.o rundata_newimage.o
+	${CXX} ${CXXFLAGS} -o $@ $^ ${LDFLAGS}
 
 # Build a fabber exectuable, this will have nothing but the generic models so it not practically useful for data analysis
 fabber: ${OBJS} ${EXECOBJS} ${CLIENTOBJS}
-	${CXX} ${CXXFLAGS} ${LDFLAGS} -o $@ ${OBJS} ${EXECOBJS} ${CLIENTOBJS} ${LIBS} 
+	${CXX} ${CXXFLAGS} -o $@ $^ ${LDFLAGS}
 
 # Library build
-libfabbercore.a : ${OBJS}
-	${AR} -r $@ ${OBJS}
+libfsl-fabbercore.so : ${OBJS}
+	${CXX} ${CXXFLAGS} -shared -o $@ $^
 
-libfabberexec.a : ${EXECOBJS} 
-	${AR} -r $@ ${EXECOBJS} 
+libfsl-fabberexec.so : ${EXECOBJS}
+	${CXX} ${CXXFLAGS} -shared -o $@ $^
 
 # Unit tests
 test: ${OBJS} ${EXECOBJS} ${CLIENTOBJS} ${TESTOBJS}
-	${CXX} ${CXXFLAGS} ${LDFLAGS} ${TESTINC} -o fabber_test ${OBJS} ${EXECOBJS} ${TESTOBJS} ${LIBS} ${TESTLIBS} 
+	${CXX} ${CXXFLAGS} -o fabber_test $^ ${LDFLAGS} ${TESTLIBS}
 
 # DO NOT DELETE
