@@ -11,7 +11,7 @@
 #include "tools.h"
 
 #include <math.h>
-#include <newmatio.h>
+#include "armawrap/newmat.h"
 
 using fabber::read_matrix_file;
 using namespace NEWMAT;

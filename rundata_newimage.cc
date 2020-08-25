@@ -14,7 +14,7 @@
 
 #include <newimage/newimage.h>
 #include <newimage/newimageio.h>
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <ostream>
 #include <string>

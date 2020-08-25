@@ -13,7 +13,7 @@
 #include <newimage/newimageall.h>
 #include <warpfns/warpfns.h>
 
-#include <newmatio.h>
+#include "armawrap/newmat.h"
 
 #include <cmath>
 #include <stdexcept>

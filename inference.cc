@@ -9,7 +9,7 @@
 #include "inference.h"
 #include "easylog.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <fstream>
 #include <iomanip>

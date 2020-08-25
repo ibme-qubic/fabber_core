@@ -14,7 +14,7 @@
 #include "setup.h"
 #include "version.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <errno.h>
 #include <fstream>

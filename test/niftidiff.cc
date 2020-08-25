@@ -5,7 +5,7 @@
 #define EPSILON 0.01
 
 #include <newimage/newimageall.h>
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <string>
 

@@ -14,7 +14,7 @@
 #include "tools.h"
 #include "version.h"
 
-#include <newmatio.h>
+#include "armawrap/newmat.h"
 
 #include <iostream>
 #include <stdexcept>

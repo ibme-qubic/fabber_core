@@ -16,7 +16,7 @@
 #include "rundata_array.h"
 #include "setup.h"
 
-#include "newmat.h"
+#include "armawrap/newmat.h"
 
 #include <sstream>
 #include <stdexcept>

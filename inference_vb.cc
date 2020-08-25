@@ -16,7 +16,7 @@
 #include "version.h"
 
 #include <miscmaths/miscmaths.h>
-#include <newmatio.h>
+#include "armawrap/newmat.h"
 
 #include <math.h>
 

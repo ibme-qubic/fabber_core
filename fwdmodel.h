@@ -13,7 +13,7 @@
 #include "factories.h"
 #include "transforms.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <string>
 #include <vector>

@@ -12,7 +12,7 @@
 #include "rundata.h"
 #include "version.h"
 
-#include <newmatio.h>
+#include "armawrap/newmat.h"
 
 #include <string>
 #include <vector>

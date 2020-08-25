@@ -9,7 +9,7 @@
 
 #include "easylog.h"
 
-#include "newmat.h"
+#include "armawrap/newmat.h"
 
 #include <map>
 #include <string>

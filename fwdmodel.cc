@@ -13,7 +13,7 @@
 #include "rundata.h"
 #include "transforms.h"
 
-#include <newmatio.h>
+#include "armawrap/newmat.h"
 
 #include <memory>
 #include <sstream>

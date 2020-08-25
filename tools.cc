@@ -11,7 +11,7 @@
 #include "easylog.h"
 
 #include <miscmaths/miscmaths.h>
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <limits>
 
