@@ -23,9 +23,9 @@
  */
 struct Parameter
 {
-    Parameter(unsigned int idx, std::string name="", 
+    Parameter(unsigned int idx, std::string name="",
         DistParams prior=DistParams(0, 1),
-        DistParams post=DistParams(0, 1), 
+        DistParams post=DistParams(0, 1),
         char prior_type='N',
         const Transform *transform=TRANSFORM_IDENTITY(),
         std::string desc="", std::string units="")

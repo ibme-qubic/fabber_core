@@ -187,7 +187,7 @@ void Vb::SetupPerVoxelDists(FabberRunData &rundata)
     {
         LOG << "Vb::Continuing from MVN" << endl;
         // Optional list of parameters in MVN
-        string paramFilename = rundata.GetStringDefault("continue-from-params", ""); 
+        string paramFilename = rundata.GetStringDefault("continue-from-params", "");
         InitMVNFromFile(rundata, paramFilename);
     }
 
@@ -487,7 +487,7 @@ void Vb::DoCalculationsVoxelwise(FabberRunData &rundata)
                     DebugVoxel(v, "Re-centered");
 
                 F = CalculateF(v, "lin", Fprior);
-                if (m_saveFsHistory) 
+                if (m_saveFsHistory)
                     resultFsHistory.at(v - 1).push_back(F);
 
                 ++m_ctx->it;
@@ -544,7 +544,7 @@ void Vb::DoCalculationsVoxelwise(FabberRunData &rundata)
                 = new MVNDist(m_ctx->fwd_post[v - 1], m_ctx->noise_post[v - 1]->OutputAsMVN());
             if (m_needF)
                 resultFs.at(v - 1) = F;
-            if (m_saveFsHistory) 
+            if (m_saveFsHistory)
                 resultFsHistory.at(v - 1).push_back(F);
         }
         catch (...)
@@ -559,7 +559,7 @@ void Vb::DoCalculationsVoxelwise(FabberRunData &rundata)
             resultMVNs.at(v - 1) = tmp;
             if (m_needF)
                 resultFs.at(v - 1) = F;
-            if (m_saveFsHistory) 
+            if (m_saveFsHistory)
                 resultFsHistory.at(v - 1).push_back(F);
         }
     }
@@ -1015,7 +1015,7 @@ void Vb::SaveResults(FabberRunData &rundata) const
         size_t num_iters = resultFsHistory[0].size();
         for (int vox = 1; vox <= nVoxels; vox++)
         {
-            if (resultFsHistory[vox-1].size() > num_iters) 
+            if (resultFsHistory[vox-1].size() > num_iters)
             {
                 num_iters = resultFsHistory[vox-1].size();
             }
@@ -1026,13 +1026,13 @@ void Vb::SaveResults(FabberRunData &rundata) const
         freeEnergyHistory.ReSize(num_iters, nVoxels);
         for (int vox = 1; vox <= nVoxels; vox++)
         {
-            for (unsigned int iter=1; iter <= num_iters; iter++) 
+            for (unsigned int iter=1; iter <= num_iters; iter++)
             {
-                if (iter <= resultFsHistory.at(vox - 1).size()) 
+                if (iter <= resultFsHistory.at(vox - 1).size())
                 {
                     freeEnergyHistory(iter, vox) = resultFsHistory.at(vox - 1).at(iter-1);
                 }
-                else 
+                else
                 {
                     freeEnergyHistory(iter, vox) = resultFsHistory.at(vox - 1).at(resultFsHistory.at(vox - 1).size()-1);
                 }
@@ -1040,6 +1040,6 @@ void Vb::SaveResults(FabberRunData &rundata) const
         }
         rundata.SaveVoxelData("freeEnergyHistory", freeEnergyHistory);
     }
-    
+
     LOG << "Vb::Done writing results." << endl;
 }

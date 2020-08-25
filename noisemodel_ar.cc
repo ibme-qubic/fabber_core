@@ -22,15 +22,15 @@
 using MISCMATHS::digamma;
 
 /**
- * There seem to be compatibility problems using SymmetricBandMatrix 
- * through armawrap. So we are just using a SymmetricMatrix and 
+ * There seem to be compatibility problems using SymmetricBandMatrix
+ * through armawrap. So we are just using a SymmetricMatrix and
  * then manually zero out the off-band elements
  */
 static void MakeBandMatrix(SymmetricMatrix &mat)
 {
-    for (int row=1; row <= mat.Nrows(); row++) 
+    for (int row=1; row <= mat.Nrows(); row++)
     {
-        for (int col=1; col <= mat.Ncols(); col++) 
+        for (int col=1; col <= mat.Ncols(); col++)
         {
             if (abs(col-row) > AR1_BANDWIDTH)
             {
@@ -215,7 +215,7 @@ void Ar1cMatrixCache::Update(const Ar1cParams &dist, int nTimes)
 const SymmetricMatrix &Ar1cMatrixCache::GetMatrix(unsigned n, unsigned a12pow, unsigned a34pow) const
 {
     unsigned idx = FlattenIndex(n, a12pow, a34pow);
-    if (alphaMatrices.size() <= idx) 
+    if (alphaMatrices.size() <= idx)
     {
         throw FabberInternalError(("GetMatrix(" + stringify(idx) + "): not enough elements (only"
                                       + stringify(alphaMatrices.size()) + ") in alphaMatrices!\n")
@@ -535,7 +535,7 @@ void Ar1cNoiseModel::UpdatePhi(NoiseParams &noise, const NoiseParams &noisePrior
 
             double tmp
                 = (k.t() * Qi * k).AsScalar() + (theta.GetCovariance() * J.t() * Qi * J).Trace();
-           
+
             posterior.phis[i - 1].b = 1 / (tmp * 0.5 + 1 / prior.phis[i - 1].b);
         }
 

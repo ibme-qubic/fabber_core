@@ -477,7 +477,7 @@ int fabber_get_model_param_descs(void *fab, unsigned int out_bufsize, char *out_
         for (iter = params.begin(); iter != params.end(); ++iter)
         {
             out << iter->name << " " << iter->desc;
-            if (iter->units != "") 
+            if (iter->units != "")
             {
                 out << " (units: " << iter->units << ")";
             }
@@ -581,7 +581,7 @@ int fabber_model_evaluate_output(void *fab, unsigned int n_params, float *params
         {
             p_vec(i + 1) = params[i];
         }
-        for (unsigned int i=0; i < n_ts; i++) 
+        for (unsigned int i=0; i < n_ts; i++)
         {
             if (indata)
                 data_vec(i + 1) = indata[i];

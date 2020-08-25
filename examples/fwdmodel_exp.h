@@ -22,10 +22,10 @@ public:
     void GetOptions(std::vector<OptionSpec> &opts) const;
 
     void Initialize(FabberRunData &args);
-    void EvaluateModel(const NEWMAT::ColumnVector &params, 
-                       NEWMAT::ColumnVector &result, 
+    void EvaluateModel(const NEWMAT::ColumnVector &params,
+                       NEWMAT::ColumnVector &result,
                        const std::string &key="") const;
-    
+
     void InitVoxelPosterior(MVNDist &posterior) const;
 
 protected:
@@ -36,4 +36,3 @@ private:
     double m_dt;
     static FactoryRegistration<FwdModelFactory, ExpFwdModel> registration;
 };
-

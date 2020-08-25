@@ -206,31 +206,31 @@ void InferenceTechnique::SaveResults(FabberRunData &rundata) const
                     result.Column(vox) = tmp;
                 }
                 // Ignore exceptions for the default Evaluate key - errors when evaluating the model would already have
-                // occurred during inference and the relevant warnings output. 
+                // occurred during inference and the relevant warnings output.
                 catch (NEWMAT::Exception &e)
                 {
-                    if (*iter != "") 
+                    if (*iter != "")
                     {
                         LOG << "InferenceTechnique::NEWMAT error generating output " << *iter << " for voxel " << vox << " : " << e.what() << endl;
-                    } 
+                    }
                 }
                 catch (std::exception &e)
                 {
-                    if (*iter != "") 
+                    if (*iter != "")
                     {
                         LOG << "InferenceTechnique::Error generating output " << *iter << " for voxel " << vox << " : " << e.what() << endl;
-                    } 
+                    }
                 }
                 catch (...)
                 {
-                    if (*iter != "") 
+                    if (*iter != "")
                     {
                         LOG << "InferenceTechnique::Unexpected error generating output " << *iter << " for voxel " << vox << " : no message available" << endl;
-                    }  
+                    }
                 }
             }
             if (*iter == "")
-            {           
+            {
                 if (saveResiduals)
                 {
                     LOG << "InferenceTechnique::Saving residuals" << endl;

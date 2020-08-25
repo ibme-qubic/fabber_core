@@ -78,4 +78,3 @@ void PolynomialFwdModel::EvaluateModel(
         result(i) = res;
     }
 }
-
