@@ -68,10 +68,10 @@ fabber: ${OBJS} ${EXECOBJS} ${CLIENTOBJS}
 
 # Library build
 libfsl-fabbercore.so : ${OBJS}
-	${CXX} ${CXXFLAGS} -shared -o $@ $^
+	${CXX} ${CXXFLAGS} -shared -o $@ $^ ${LDFLAGS}
 
 libfsl-fabberexec.so : ${EXECOBJS}
-	${CXX} ${CXXFLAGS} -shared -o $@ $^
+	${CXX} ${CXXFLAGS} -shared -o $@ $^ ${LDFLAGS}
 
 # Unit tests
 test: ${OBJS} ${EXECOBJS} ${CLIENTOBJS} ${TESTOBJS}
