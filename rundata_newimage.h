@@ -18,7 +18,7 @@
 #include "rundata.h"
 
 #include "newimage/newimage.h"
-#include "newmat.h"
+#include "armawrap/newmat.h"
 
 #include <string>
 

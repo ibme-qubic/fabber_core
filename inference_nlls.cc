@@ -17,7 +17,7 @@
 #include "tools.h"
 #include "version.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <string>
 #include <vector>

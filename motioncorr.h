@@ -15,7 +15,7 @@
 #include <newimage/newimage.h>
 #include <warpfns/warpfns.h>
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 //   NB: for now the mask should cover the *entire* image as we zero everything
 //       outside of the mask, which is not good for registration

@@ -9,7 +9,7 @@
 
 #include "rundata.h"
 
-#include <newmatio.h>
+#include "armawrap/newmat.h"
 
 #include <assert.h>
 #include <math.h>

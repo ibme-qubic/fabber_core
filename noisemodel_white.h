@@ -11,7 +11,7 @@
 
 #include "dist_gamma.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <ostream>
 #include <string>

@@ -9,7 +9,7 @@
 #include "fwdmodel.h"
 #include "rundata.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <string>
 #include <vector>

@@ -10,7 +10,7 @@
 
 #include "easylog.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <boost/shared_ptr.hpp>
 

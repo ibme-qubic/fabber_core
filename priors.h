@@ -11,7 +11,7 @@
 #include "run_context.h"
 #include "rundata.h"
 
-#include <newmat.h>
+#include "armawrap/newmat.h"
 
 #include <ostream>
 #include <string>
